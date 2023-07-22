@@ -13,7 +13,7 @@ class URLMap(db.Model):
     short = db.Column(
         db.String(SHORT_LINK_LENGTH), unique=True, nullable=False
     )
-    time_stamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
     def to_dict(self):
         return dict(
@@ -27,6 +27,7 @@ class URLMap(db.Model):
     @staticmethod
     def get_short(short):
         return URLMap.query.filter_by(short=short).first()
+
     @staticmethod
     def get_unique_short_id():
         while True:
@@ -39,4 +40,7 @@ class URLMap(db.Model):
 
     @staticmethod
     def create_short_link(short_generated):
-        return MAIN_URL + short_generated
+        if short_generated:
+            short_link = MAIN_URL + short_generated
+            return short_link
+        return None
