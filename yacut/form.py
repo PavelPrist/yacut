@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import SubmitField, URLField
 from wtforms.validators import (
-    InputRequired, Length, Optional, Regexp, ValidationError)
+    InputRequired, Length, Optional, Regexp, URL, ValidationError)
 
 from settings import (
     INVALID_SHORT_URL,
@@ -24,6 +24,7 @@ class URLForm(FlaskForm):
             InputRequired(
                 message=REQUIRED_URL
             ),
+            URL()
         ]
     )
     custom_id = URLField(
