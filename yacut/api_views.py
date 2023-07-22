@@ -39,7 +39,6 @@ def create_short_link():
             f'Имя "{short}" уже занято.',
             HTTPStatus.BAD_REQUEST
         )
-    short_link = URLMap.create_short_link(short)
     url_map = URLMap(
         original=data.get('url'),
         short=short
