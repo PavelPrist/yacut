@@ -4,7 +4,7 @@ import string
 
 ALLOWED_SIMBOLS = string.ascii_letters + string.digits
 ALLOWED_SIMBOLS_API_SHORT = '^[a-zA-Z0-9]+$'
-MAIN_URL = 'http://127.0.0.1:5000/'
+MAIN_URL = 'http://localhost/'
 SHORT_LINK_LENGTH = 6
 SHORT_LINK_LENGTH_MAX = 16
 SHORT_URL_PATTERN = '^[' + re.escape(ALLOWED_SIMBOLS) + ']+$'
