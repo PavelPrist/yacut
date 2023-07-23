@@ -5,7 +5,7 @@ from wtforms.validators import (
 
 from settings import (
     INVALID_ORIGINAL_URL, INVALID_SHORT_URL,
-    SHORT_LINK_LENGTH, SHORT_LINK_LENGTH_MAX, SHORT_URL_PATTERN
+    SHORT_LINK_LENGTH_MAX, SHORT_URL_PATTERN
 )
 from yacut.models import URLMap
 
@@ -45,7 +45,7 @@ class URLForm(FlaskForm):
         SUBMIT_COMMENT
     )
 
-    def validate_custom_id(form, field):
+    def validate_custom_id(self, field):
         if URLMap.get_short(field.data):
             raise ValidationError(
                 SHORT_LINK_IS.format(
