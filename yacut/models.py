@@ -41,6 +41,7 @@ class URLMap(db.Model):
     @staticmethod
     def create_short_link(short_generated):
         if short_generated:
-            short_link = MAIN_URL + short_generated
+            short_link = url_for('redirect_view', short=short_generated,
+                                 _external=True)
             return short_link
         return None
