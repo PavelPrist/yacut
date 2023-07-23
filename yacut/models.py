@@ -3,7 +3,7 @@ from datetime import datetime
 
 from flask import url_for
 
-from settings import ALLOWED_SIMBOLS, MAIN_URL, SHORT_LINK_LENGTH
+from settings import ALLOWED_SIMBOLS, SHORT_LINK_LENGTH
 from yacut import db
 
 
