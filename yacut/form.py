@@ -4,8 +4,8 @@ from wtforms.validators import (
     InputRequired, Length, Optional, Regexp, URL, ValidationError)
 
 from settings import (
-    INVALID_SHORT_URL,
-    SHORT_LINK_LENGTH, SHORT_URL_PATTERN
+    INVALID_ORIGINAL_URL, INVALID_SHORT_URL,
+    SHORT_LINK_LENGTH, SHORT_LINK_LENGTH_MAX, SHORT_URL_PATTERN
 )
 from yacut.models import URLMap
 
@@ -24,14 +24,14 @@ class URLForm(FlaskForm):
             InputRequired(
                 message=REQUIRED_URL
             ),
-            URL()
+            URL(message=INVALID_ORIGINAL_URL)
         ]
     )
     custom_id = URLField(
         SHORT_URL_COMMENT,
         validators=[
             Length(
-                max=SHORT_LINK_LENGTH,
+                max=SHORT_LINK_LENGTH_MAX,
                 message=INVALID_SHORT_URL
             ),
             Optional(),
